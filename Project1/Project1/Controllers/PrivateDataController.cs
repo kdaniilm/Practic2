@@ -15,14 +15,14 @@ namespace Project1.Controllers
     {
         
         [HttpGet]
-        [Authorize(Roles = "true")]
+        [Authorize(Roles = "manager")]
         [Route("get-manager")]
         public IEnumerable<string> GetManager()
         {
             return new string[] { "First manager data", "Second manager data" };
         }
         [HttpGet]
-        [Authorize(Roles = "false")]
+        [Authorize(Roles = "editor")]
         [Route("get-editor")]
         public IEnumerable<string> GetEditor()
         {

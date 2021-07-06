@@ -18,8 +18,8 @@ namespace Project1.Controllers
     {
         private List<LoginModel> users = new List<LoginModel>
         {
-            new LoginModel {UserName="manager", Password="manager", IsManager = "true" },
-            new LoginModel { UserName="editor", Password="editor", IsManager = "false" }
+            new LoginModel {UserName="manager", Password="manager", Role = "manager" },
+            new LoginModel { UserName="editor", Password="editor", Role = "editor" }
         };
         [HttpPost]
         [Route("login")]
@@ -57,7 +57,7 @@ namespace Project1.Controllers
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimsIdentity.DefaultNameClaimType, user.UserName),
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType, user.IsManager)
+                    new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role)
                 };
                 ClaimsIdentity claimsIdentity =
                 new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
